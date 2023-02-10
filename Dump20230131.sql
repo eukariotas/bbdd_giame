@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `giame` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `giame`;
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: giame
@@ -26,8 +24,11 @@ DROP TABLE IF EXISTS `party`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `party` (
   `id` int NOT NULL,
-  `winner` int NOT NULL,
+  `winner` int DEFAULT NULL,
   `date` timestamp NULL DEFAULT NULL,
+  `max_player` int NOT NULL,
+  `tipe_game` varchar(20) NOT NULL,
+  `state` tinyint NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -200,4 +201,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-31 14:26:55
+-- Dump completed on 2023-02-10 15:52:00
