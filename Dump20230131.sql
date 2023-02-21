@@ -25,10 +25,10 @@ DROP TABLE IF EXISTS `party`;
 CREATE TABLE `party` (
   `id` int NOT NULL,
   `winner` int DEFAULT NULL,
-  `date` timestamp NULL DEFAULT NULL,
+  `date` timestamp NOT NULL,
   `max_player` int NOT NULL,
   `tipe_game` varchar(20) NOT NULL,
-  `state` tinyint NOT NULL,
+  `state` varchar(10) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -112,8 +112,9 @@ CREATE TABLE `turn` (
   `party_id` int NOT NULL,
   `user_id` int NOT NULL,
   `end` tinyint NOT NULL,
-  `next_turn_id` int NOT NULL,
-  PRIMARY KEY (`id`,`party_id`),
+  `next_turn_id` int NULL,
+  `num_turn` int NOT NULL,
+  PRIMARY KEY (`id`),
   KEY `fk_turno_party1_idx` (`party_id`),
   KEY `fk_turno_user1_idx` (`user_id`),
   KEY `fk_turn_turn1_idx` (`next_turn_id`),
