@@ -40,6 +40,7 @@ CREATE TABLE `party` (
 
 LOCK TABLES `party` WRITE;
 /*!40000 ALTER TABLE `party` DISABLE KEYS */;
+INSERT INTO `party` VALUES (1,NULL,'2023-02-22 15:05:52',2,'3enraya','open'),(2,NULL,'2023-02-22 16:06:55',2,'ajedrez','open'),(3,NULL,'2023-02-22 17:06:55',2,'3enraya','open'),(4,NULL,'2023-02-22 18:06:55',3,'ajedrez','open'),(5,NULL,'2023-02-22 19:06:55',2,'3enraya','closed'),(6,NULL,'2023-02-22 20:06:55',2,'ajedrez','open'),(7,NULL,'2023-02-22 21:06:55',2,'3enraya','closed'),(8,NULL,'2023-02-22 22:06:55',2,'ajedrez','closed'),(9,NULL,'2023-02-22 23:06:55',2,'3enraya','open'),(10,NULL,'2023-02-23 00:06:55',2,'ajedrez','closed'),(11,NULL,'2023-02-23 01:06:55',2,'3enraya','open');
 /*!40000 ALTER TABLE `party` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,7 +113,7 @@ CREATE TABLE `turn` (
   `party_id` int NOT NULL,
   `user_id` int NOT NULL,
   `end` tinyint NOT NULL,
-  `next_turn_id` int NULL,
+  `next_turn_id` int DEFAULT NULL,
   `num_turn` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_turno_party1_idx` (`party_id`),
@@ -202,4 +203,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-10 15:52:00
+-- Dump completed on 2023-02-28 21:52:18
