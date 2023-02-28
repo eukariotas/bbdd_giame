@@ -23,12 +23,12 @@ DROP TABLE IF EXISTS `party`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `party` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `winner` int DEFAULT NULL,
-  `date` timestamp NOT NULL,
+  `date` timestamp NULL DEFAULT NULL,
   `max_player` int NOT NULL,
   `tipe_game` varchar(20) NOT NULL,
-  `state` varchar(10) NOT NULL,
+  `state` tinyint NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -40,7 +40,6 @@ CREATE TABLE `party` (
 
 LOCK TABLES `party` WRITE;
 /*!40000 ALTER TABLE `party` DISABLE KEYS */;
-INSERT INTO `party` VALUES (1,NULL,'2023-02-22 15:05:52',2,'3enraya','open'),(2,NULL,'2023-02-22 16:06:55',2,'ajedrez','open'),(3,NULL,'2023-02-22 17:06:55',2,'3enraya','open'),(4,NULL,'2023-02-22 18:06:55',3,'ajedrez','open'),(5,NULL,'2023-02-22 19:06:55',2,'3enraya','closed'),(6,NULL,'2023-02-22 20:06:55',2,'ajedrez','open'),(7,NULL,'2023-02-22 21:06:55',2,'3enraya','closed'),(8,NULL,'2023-02-22 22:06:55',2,'ajedrez','closed'),(9,NULL,'2023-02-22 23:06:55',2,'3enraya','open'),(10,NULL,'2023-02-23 00:06:55',2,'ajedrez','closed'),(11,NULL,'2023-02-23 01:06:55',2,'3enraya','open');
 /*!40000 ALTER TABLE `party` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,7 +80,7 @@ DROP TABLE IF EXISTS `token`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `token` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `token` varchar(200) DEFAULT NULL,
   `caducity` timestamp NOT NULL,
   `user_id` int NOT NULL,
@@ -108,14 +107,13 @@ DROP TABLE IF EXISTS `turn`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `turn` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `info` varchar(200) NOT NULL,
   `party_id` int NOT NULL,
   `user_id` int NOT NULL,
   `end` tinyint NOT NULL,
-  `next_turn_id` int DEFAULT NULL,
-  `num_turn` int NOT NULL,
-  PRIMARY KEY (`id`),
+  `next_turn_id` int NOT NULL,
+  PRIMARY KEY (`id`,`party_id`),
   KEY `fk_turno_party1_idx` (`party_id`),
   KEY `fk_turno_user1_idx` (`user_id`),
   KEY `fk_turn_turn1_idx` (`next_turn_id`),
@@ -203,4 +201,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-28 21:52:18
+-- Dump completed on 2023-02-28 23:08:19
