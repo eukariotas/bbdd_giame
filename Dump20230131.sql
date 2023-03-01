@@ -28,7 +28,7 @@ CREATE TABLE `party` (
   `date` timestamp NULL DEFAULT NULL,
   `max_player` int NOT NULL,
   `tipe_game` varchar(20) NOT NULL,
-  `state` tinyint NOT NULL,
+  `state` varchar(15) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
